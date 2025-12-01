@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<div></div>
+<div>
+<button onclick="stop()">stop</button>
+<button onclick="cont()" disabled>continue</button>
+</div>
+
+<body>
+    <script>
+        let div=document.querySelector('div')
+        let bts = document.querySelectorAll("button")[0]
+        bts.classList.add("stp")
+
+        let btn = document.querySelectorAll("button")[1]
+        
+        let d=new Date()         
+        div.innerText=d.toLocaleTimeString()
+
+        let fun=()=>{
+            let d=new Date()         
+            div.innerText=d.toLocaleTimeString()
+        } 
+        let iid=setInterval(fun,1000)
+
+        let cont=() =>{
+            iid=setInterval(fun,1000)
+            btn.disabled = !btn.disabled
+            bts.disabled=!bts.disabled  
+            div.style.backgroundColor="green"        
+            div.style.color="white"            
+        }     
+
+        let stop=()=>{
+            clearInterval(iid)
+            btn.disabled= !btn.disabled
+            bts.disabled=!bts.disabled    
+            div.style.backgroundColor="red"  
+            div.style.color="black" 
+        }
+
+    </script>
+</body>
+</html>

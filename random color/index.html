@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <button onclick="fun()">COLOR</button>
+    <div>Random color</div>
+    <script>
+        function fun(){
+            let div=document.querySelector('div')
+            let a=Math.floor(Math.random()*255)
+            let b=Math.floor(Math.random()*255)
+            let c=Math.floor(Math.random()*255)
+            let d=(Math.random()).toFixed(3)
+            div.style.background=`rgba(${a},${b},${c},${d})`
+            div.innerText=`rgba(${a},${b},${c},${d})`
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Numbers</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <label for="number">Enter a number upto where you want to generate random numbers</label>
+    <input id="number" type="number" placeholder="Enter Number"/>
+    <button onclick="gen()">Generate</button>
+    <p></p>
+    <script>
+        function gen(){
+            let inp=document.querySelector('input')
+            let n=document.querySelector('p')
+            n.innerText=Math.floor(Math.random()*(inp.value))
+        }
+    </script>
+</body>
+</html>

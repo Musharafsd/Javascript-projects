@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guess my number</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+  <div class="container">
+  <h1>Guess My Number</h1>
+  <label for="number">Guess a random number</label>
+  <div class="range-box"><input type="text"  value="1" />
+  <input id="number" type="text"  value="100"/>
+  <button onclick="trg()">New target</button></div>
+  <p></p>
+  <input id="guessInput" type="text" />
+  <button onclick="fun()">Guess</button>
+<script>
+    let r=document.querySelector('p')
+    r.innerText='Please guess a number, enter it, and press Guess:'
+    let p=document.querySelectorAll('input')[1]
+    let a=Math.floor(Math.random()*(p.value))
+    let count=0
+
+    function trg(){
+      r.innerText='Please guess a number, enter it, and press Guess:'
+      a=Math.floor(Math.random()*(p.value))
+      let count=0
+    }
+    
+    function fun(){
+    count++
+    let d=document.querySelectorAll('input')[0]
+    let q=document.querySelectorAll('input')[2]
+
+    if(q.value==a){
+        r.innerText=`Well Done! It took you ${count} attempts to guess this number`
+    }else if(q.value<a){
+        r.innerText=`My number is greater than ${q.value}`
+    }else{
+        r.innerText=`My number is lesser than ${q.value}`
+    }
+    }
+
+</script>
+</div>  
+</body>
+
+</html>

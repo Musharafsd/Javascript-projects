@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <h1></h1>
+    <button onclick="start()">start</button>
+    <button onclick="stop()">stop</button>
+    <button onclick="reset()">reset</button>
+    <script>
+        let h=document.querySelector('h1')
+        h.innerText="0"+0+":"+"0"+0+":"+"0"+0
+
+        let s=0
+        let m=0
+        let hr=0
+        let iid=-1
+        let inc=()=>{
+            if(s<=60){
+                s++
+            }
+            if(s==60){
+                s=0
+                m++
+            }
+            if(m==60){
+                s=0
+                m=0
+                hr++
+            }
+            h.innerHTML=`${hr<10?"0"+hr:hr}:${m<10?"0"+m:m}:${s<10?"0"+s:s}`
+        }
+        let start=()=>{
+            if (iid==-1){
+                iid=setInterval(inc,1000)
+            }
+        }
+        let stop=()=>{
+            clearInterval(iid)
+            iid=-1
+            h.innerHTML=`${hr<10?"0"+hr:hr}:${m<10?"0"+m:m}:${s<10?"0"+s:s}`
+        }
+        let reset=()=>{
+            clearInterval(iid)
+            s=0
+            m=0
+            hr=0
+            h.innerHTML=`${hr<10?"0"+hr:hr}:${m<10?"0"+m:m}:${s<10?"0"+s:s}`
+        }
+    </script>
+</body>
+</html>

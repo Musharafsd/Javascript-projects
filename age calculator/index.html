@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <label for="date">Date of Birth:</label>
+    <input id="date" type="date"/>
+    <div>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+    </div>
+    <script>
+        let p=new Date()
+        let inp=document.querySelector('input')
+        inp.addEventListener("input",()=>{
+        let d=inp.value
+
+        arr=p.toLocaleDateString().split('/')
+        arr1=(d.split('-')).reverse()
+
+        res=parseInt(arr[0])-parseInt(arr1[0])    
+        res1=parseInt(arr[1])-parseInt(arr1[1])
+        res2=parseInt(arr[2])-parseInt(arr1[2])
+
+        if (res<0){
+            res=31+res
+            res1=res1-1
+            res2=res2      
+        }
+        if(res1<0){
+            res=res
+            res1=12+res1
+            res2=res2-1
+        }
+
+        result=(res2*365)+(res1*30)+(res)
+
+        let div=document.querySelector('div')
+        let p0=document.querySelectorAll('p')[0]
+        let p1=document.querySelectorAll('p')[1]
+        let p2=document.querySelectorAll('p')[2]
+        let p3=document.querySelectorAll('p')[3]
+        let p4=document.querySelectorAll('p')[4]
+
+        p0.innerHTML=`${res2} years ${res1} months ${res} days`
+        p1.innerHTML=`or ${(res2*12)+res1} months ${res} days`
+        p2.innerHTML=`or ${result*24} hours`
+        p3.innerHTML=`or ${result*60*24} minutes`
+        p4.innerHTML=`or ${result*3600*24} seconds`
+        div.append(p0,p1,p2,p3,p4)
+
+        })
+
+        </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+    <div class="calculator">
+        <input type="text" readonly class="display">
+        <div class="buttons">
+            <button onCLick="press('1')">1</button>
+            <button onCLick="press('2')">2</button>
+            <button onCLick="press('3')">3</button>
+            <button onCLick="press('+')">+</button>
+
+            <button onCLick="press('4')">4</button>
+            <button onCLick="press('5')">5</button>
+            <button onCLick="press('6')">6</button>
+            <button onCLick="press('*')">*</button>
+
+            <button onCLick="press('7')">7</button>
+            <button onCLick="press('8')">8</button>
+            <button onCLick="press('9')">9</button>
+            <button onclick="press('-')">-</button>
+
+            <button onclick="press('0')">0</button>
+            <button onClick="deldata()">del</button>
+            <button onClick="clr()">clear</button>
+            <button onClick="cal()">=</button>
+
+        </div>
+    </div>
+
+    <script>
+        let inp = document.querySelector('input')
+
+        function press(n) {
+            inp.value += n
+        }
+
+        function clr() {
+            inp.value = ""
+        }
+
+        function cal() {
+            inp.value = eval(inp.value)
+        }
+
+        function deldata() {
+            inp.value = inp.value.slice(0, inp.value.length - 1)
+        }
+    </script>
+</body>
+
+</html>

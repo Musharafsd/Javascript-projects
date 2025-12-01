@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To DO List</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div>
+  <input type="text" placeholder="Enter list item"/>
+  <button onclick="getdata()">add </button>
+</div>
+<ul></ul> 
+<script>
+  var ul=document.querySelector('ul')
+
+  function getdata(){
+    let inp=document.querySelector('input')
+
+    let li=document.createElement('li')
+    let span=document.createElement('span')
+    span.innerText=inp.value
+
+    let div=document.createElement('div')
+
+    let btn1=document.createElement('button')
+    btn1.innerText='update'
+
+    btn1.addEventListener('click',()=>{
+        var newdata=prompt('enter task name')
+        span.innerText=newdata
+    })
+    
+    let btn2=document.createElement('button')
+    btn2.innerText='delete'
+    btn2.addEventListener('click',()=>{
+        li.remove()
+    })
+
+    div.append(btn1,btn2)
+    li.append(span,div)
+    ul.append(li)
+  }
+</script>
+</body>
+</html>
