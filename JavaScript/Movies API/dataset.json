@@ -1,0 +1,259 @@
+{
+  "movies": [
+    {
+      "image": "https://www.tallengestore.com/cdn/shop/products/Inception-LeonardoDiCaprio-ChristopherNolan-HollywoodSciFiMoviePoster.jpg?v=1685582030",
+      "title": "Inception",
+      "year": " 2009",
+      "genre": "action",
+      "summary": "A skilled thief enters people's dreams to steal secrets but must plant an idea in someone's mind to save himself.",
+      "boxOffice": {
+        "budget": "160000000",
+        "collection": "829895144"
+      },
+      "id": 1
+    },
+    {
+      "id": 2,
+      "title": "Interstellar",
+      "year": 2014,
+      "genre": [
+        "Sci-Fi",
+        "Drama"
+      ],
+      "rating": 8.6,
+      "duration": 169,
+      "summary": "A team of explorers travels through a wormhole in space to save humanity from a dying Earth.",
+      "image": "https://m.media-amazon.com/images/I/91kFYg4fX3L._AC_UF894,1000_QL80_.jpg",
+      "cast": [
+        {
+          "name": "Matthew McConaughey",
+          "role": "Cooper"
+        },
+        {
+          "name": "Anne Hathaway",
+          "role": "Brand"
+        }
+      ],
+      "boxOffice": {
+        "budget": 165000000,
+        "collection": 701729206
+      }
+    },
+    {
+      "id": 3,
+      "title": "The Dark Knight",
+      "year": 2008,
+      "genre": [
+        "Action",
+        "Crime"
+      ],
+      "rating": 9,
+      "duration": 152,
+      "summary": "Batman faces his greatest psychological and physical challenge when the Joker unleashes chaos in Gotham.",
+      "image": "https://upload.wikimedia.org/wikipedia/en/1/1c/The_Dark_Knight_%282008_film%29.jpg",
+      "cast": [
+        {
+          "name": "Christian Bale",
+          "role": "Bruce Wayne"
+        },
+        {
+          "name": "Heath Ledger",
+          "role": "Joker"
+        }
+      ],
+      "boxOffice": {
+        "budget": 185000000,
+        "collection": 1004558444
+      }
+    },
+    {
+      "id": 4,
+      "title": "Avengers: Endgame",
+      "year": 2019,
+      "genre": [
+        "Action",
+        "Sci-Fi"
+      ],
+      "rating": 8.4,
+      "duration": 181,
+      "summary": "After the devastating events of Infinity War, the Avengers assemble once more to undo Thanos' actions.",
+      "image": "https://m.media-amazon.com/images/I/81ExhpBEbHL._AC_UF894,1000_QL80_.jpg",
+      "cast": [
+        {
+          "name": "Robert Downey Jr.",
+          "role": "Iron Man"
+        },
+        {
+          "name": "Chris Evans",
+          "role": "Captain America"
+        }
+      ],
+      "boxOffice": {
+        "budget": 356000000,
+        "collection": 2797501328
+      }
+    },
+    {
+      "id": 5,
+      "title": "Avatar",
+      "year": 2009,
+      "genre": [
+        "Sci-Fi",
+        "Adventure"
+      ],
+      "rating": 7.8,
+      "duration": 162,
+      "summary": "A marine on an alien planet becomes conflicted between following orders and protecting a new world.",
+      "image": "https://m.media-amazon.com/images/M/MV5BZDYxY2I1OGMtN2Y4MS00ZmU1LTgyNDAtODA0MzAyYjI0N2Y2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+      "cast": [
+        {
+          "name": "Sam Worthington",
+          "role": "Jake Sully"
+        },
+        {
+          "name": "Zoe Saldana",
+          "role": "Neytiri"
+        }
+      ],
+      "boxOffice": {
+        "budget": 237000000,
+        "collection": 2923706026
+      }
+    },
+    {
+      "id": 6,
+      "title": "Joker",
+      "year": 2019,
+      "genre": [
+        "Crime",
+        "Drama"
+      ],
+      "rating": 8.4,
+      "duration": 122,
+      "summary": "A struggling comedian descends into madness and becomes the iconic criminal mastermind Joker.",
+      "image": "https://www.tallengestore.com/cdn/shop/products/Joker_-_Put_On_A_Happy_Face_-_Joaquin_Phoenix_-_Hollywood_English_Movie_Poster_3_323b577e-3bbb-4080-ba96-c144869378a3.jpg?v=1579504974",
+      "cast": [
+        {
+          "name": "Joaquin Phoenix",
+          "role": "Arthur Fleck"
+        },
+        {
+          "name": "Robert De Niro",
+          "role": "Murray Franklin"
+        }
+      ],
+      "boxOffice": {
+        "budget": 55000000,
+        "collection": 1074251311
+      }
+    },
+    {
+      "id": 7,
+      "title": "KGF Chapter 2",
+      "year": 2022,
+      "genre": [
+        "Action",
+        "Drama"
+      ],
+      "rating": 8.3,
+      "duration": 168,
+      "summary": "Rocky continues his dominance as enemies rise to destroy his growing empire.",
+      "image": "https://media.assettype.com/tnm%2Fimport%2Fsites%2Fdefault%2Ffiles%2FKGF-chapter2.jpg?w=480&auto=format%2Ccompress&fit=max",
+      "cast": [
+        {
+          "name": "Yash",
+          "role": "Rocky"
+        },
+        {
+          "name": "Sanjay Dutt",
+          "role": "Adheera"
+        }
+      ],
+      "boxOffice": {
+        "budget": 10000000,
+        "collection": 120000000
+      }
+    },
+    {
+      "id": 8,
+      "title": "RRR",
+      "year": 2022,
+      "genre": [
+        "Action",
+        "Drama"
+      ],
+      "rating": 8,
+      "duration": 187,
+      "summary": "Two legendary revolutionaries fight against British rule in an epic fictional tale.",
+      "image": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/RRR_Album.jpeg/250px-RRR_Album.jpeg",
+      "cast": [
+        {
+          "name": "Ram Charan",
+          "role": "Alluri Sitarama Raju"
+        },
+        {
+          "name": "Jr NTR",
+          "role": "Komaram Bheem"
+        }
+      ],
+      "boxOffice": {
+        "budget": 72000000,
+        "collection": 160000000
+      }
+    },
+    {
+      "id": 9,
+      "title": "Bahubali 2: The Conclusion",
+      "year": 2017,
+      "genre": [
+        "Action",
+        "Fantasy"
+      ],
+      "rating": 8.2,
+      "duration": 167,
+      "summary": "Mahendra Baahubali sets out to avenge his father's death and reclaim the kingdom.",
+      "image": "https://dontcallitbollywood.com/wp-content/uploads/2017/04/dbd4a-bah.jpg",
+      "cast": [
+        {
+          "name": "Prabhas",
+          "role": "Amarendra Baahubali"
+        },
+        {
+          "name": "Rana Daggubati",
+          "role": "Bhallaladeva"
+        }
+      ],
+      "boxOffice": {
+        "budget": 40000000,
+        "collection": 250000000
+      }
+    },
+    {
+      "id": 10,
+      "title": "Titanic",
+      "year": 1997,
+      "genre": [
+        "Romance",
+        "Drama"
+      ],
+      "rating": 7.9,
+      "duration": 195,
+      "summary": "A timeless romance blossoms aboard the ill-fated RMS Titanic.",
+      "image": "https://www.onthisday.com/images/articles/titanic-the-movie.jpg",
+      "cast": [
+        {
+          "name": "Leonardo DiCaprio",
+          "role": "Jack Dawson"
+        },
+        {
+          "name": "Kate Winslet",
+          "role": "Rose DeWitt Bukater"
+        }
+      ],
+      "boxOffice": {
+        "budget": 200000000,
+        "collection": 2264433294
+      }
+    }
+  ]
+}

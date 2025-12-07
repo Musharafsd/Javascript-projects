@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies Api</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div class="con">
+
+    <div class="apisget">
+        <h1>filter movies</h1>
+        <div class="filtertitle">
+            <label for="">Filtered by Title</label>
+            <input type="text" id="filteredbytitle" placeholder="enter title">
+        </div>
+        <div class="filterbudget">
+            <label for="">Sort by Budget</label>
+            <select name="" id="sortedbybudget">
+                <option value=''>all</option>
+                <option value=1>high-low</option>
+                <option value=-1>low-high</option>
+            </select>
+        </div>
+        <div class="filtercollection">
+            <label for="">Sort by Collection</label>
+            <select name="" id="sortedbycollection">
+                <option value=''>all</option>
+                <option value=1>high-low</option>
+                <option value=-1>low-high</option>
+            </select>
+        </div>
+        <button onclick="getapidata()">Get Data</button>
+    </div>
+
+    <div class="apispost">
+        <input type="text" placeholder="Enter image url"/>
+        <input type="text" placeholder="Enter title of movie"/>
+        <input type="text" placeholder="Enter release year"/>
+        <input type="text" placeholder="Enter genre"/>
+        <input type="text" placeholder="Enter summary"/>
+        <input type="text" placeholder="Enter budget"/>
+        <input type="text" placeholder="Enter collection"/>
+        <button onclick="postdata()">Post Data</button>
+    </div>
+
+    <div class="apisput">
+        <input type="text" placeholder="Enter image url"/>
+        <input type="text" placeholder="Enter title of movie"/>
+        <input type="text" placeholder="Enter release year"/>
+        <input type="text" placeholder="Enter genre"/>
+        <input type="text" placeholder="Enter summary"/>
+        <input type="text" placeholder="Enter budget"/>
+        <input type="text" placeholder="Enter collection"/>
+        <input type="number" placeholder="Enter id"/>
+        <button onclick="putdata()">Modify Data</button>
+    </div>
+
+    <div class="apisdel">
+        <input type="number" placeholder="Enter id"/>
+        <button onclick="deldata()">Delete Data</button>
+        <button onclick="cart()" id="cartBtn">Cart (0)</button>
+        <div class="review">
+            <textarea rows="10" cols="30" placeholder="Enter your Review"></textarea>
+            <button onclick="review()" id="reviewBtn">Review (0)</button>
+        </div>
+    </div>
+    </div>
+    
+    <div class="apidata"></div>
+
+    <script>
+    let allMovies = [];
+    let cartItems = [];
+    let reviews = [];
+
+    async function getapidata() {
+        let data = await fetch(`http://localhost:3000/movies`);
+        let res = await data.json();
+        console.log(res);
+
+        allMovies = res;
+
+        renderMovies();
+    }
+    getapidata()
+
+    function renderMovies() {
+        let div1 = document.querySelector('.apidata');
+        div1.innerHTML = "";
+
+        let titleFilter = document.getElementById('filteredbytitle').value.trim().toLowerCase();
+        let sortValue = document.getElementById('sortedbybudget').value; 
+        let sortValue1 = document.getElementById('sortedbycollection').value; 
+
+        let filtered = allMovies.filter((obj) => {
+            if (!titleFilter) return true;
+            return obj.title.toLowerCase().includes(titleFilter);
+        });
+
+        if (sortValue === "1" || sortValue === "-1") {
+            let dir = Number(sortValue); 
+
+            filtered.sort((a, b) => {
+                let budgetA = Number(a.boxOffice?.budget || 0);
+                let budgetB = Number(b.boxOffice?.budget || 0);
+
+                if (dir === 1) {
+                    return budgetB - budgetA; 
+                } else {
+                    return budgetA - budgetB;
+                }
+            });
+        }
+
+        if (sortValue1 === "1" || sortValue1 === "-1") {
+            let dir = Number(sortValue1); 
+
+            filtered.sort((a, b) => {
+                let budgetA = Number(a.boxOffice?.collection || 0);
+                let budgetB = Number(b.boxOffice?.collection || 0);
+
+                if (dir === 1) {
+                    return budgetB - budgetA; 
+                } else {
+                    return budgetA - budgetB;
+                }
+            });
+        }
+
+        filtered.forEach((obj) => {
+            let card = document.createElement('div');
+            card.className = 'card';
+
+            let i = document.createElement('img');
+            let h = document.createElement('h1');
+            let p = document.createElement('p');
+            let r = document.createElement('p');
+            let s = document.createElement('p');
+            let t = document.createElement('p');
+            let u = document.createElement('p');
+            let b = document.createElement('button')
+
+            i.setAttribute('src', obj.image);
+            h.innerText = obj.title;
+            p.innerText = "year: " + obj.year;
+            r.innerText = "genre: " + obj.genre;
+            s.innerText = "summary: " + obj.summary;
+            t.innerText = "budget: " + obj.boxOffice.budget;
+            u.innerText = "Collection: " + obj.boxOffice.collection;
+            b.innerText = "Add to Cart"
+
+            b.addEventListener('click', () => {
+                addToCart(obj);
+            });
+
+            card.append(i, h, p, r, s, t, u, b);
+            div1.append(card);
+        });
+    }
+
+    function renderCart() {
+        let div1 = document.querySelector('.apidata');
+        div1.innerHTML = "";
+
+        if (cartItems.length === 0) {
+            div1.innerHTML = "<h2>No items in cart</h2>";
+            return;
+        }
+
+        cartItems.forEach((obj) => {
+            let card = document.createElement('div');
+            card.className = 'card';
+
+            let i = document.createElement('img');
+            let h = document.createElement('h1');
+            let p = document.createElement('p');
+            let r = document.createElement('p');
+            let s = document.createElement('p');
+            let t = document.createElement('p');
+            let u = document.createElement('p');
+
+            i.setAttribute('src', obj.image);
+            h.innerText = obj.title;
+            p.innerText = "year: " + obj.year;
+            r.innerText = "genre: " + obj.genre;
+            s.innerText = "summary: " + obj.summary;
+            t.innerText = "budget: " + obj.boxOffice.budget;
+            u.innerText = "Collection: " + obj.boxOffice.collection;
+
+            card.append(i, h, p, r, s, t, u);
+            div1.append(card);
+        });
+    }
+    function addToCart(movie) {
+        let exists = cartItems.find((m) => m.id === movie.id);
+        if (!exists) {
+            cartItems.push(movie);
+            updateCartButton();
+            alert(`${movie.title} added to cart`);
+        } else {
+            alert(`${movie.title} is already in cart`);
+        }
+    }
+
+    function updateCartButton() {
+        let btn = document.getElementById('cartBtn');
+        btn.textContent = `Cart (${cartItems.length})`;
+    }
+
+    function cart() {
+        renderCart();
+    }
+
+    function renderReviews() {
+    let div1 = document.querySelector('.apidata');
+    div1.innerHTML = "";
+
+    if (reviews.length === 0) {
+        div1.innerHTML = "<h2>No reviews yet</h2>";
+        return;
+    }
+
+    let heading = document.createElement('h2');
+    heading.innerText = "Reviews";
+    div1.appendChild(heading);
+
+    reviews.forEach((text, index) => {
+        let box = document.createElement('div');
+        box.className = "review-card";
+
+        let num = document.createElement('h3');
+        num.innerText = `Review ${index + 1}`;
+
+        let p = document.createElement('p');
+        p.innerText = text;
+
+        box.append(num, p);
+        div1.appendChild(box);
+    });
+    }
+
+    function review() {
+        let textarea = document.querySelector('.review textarea');
+        let text = textarea.value.trim();
+
+        if (!text) {
+            alert("Please write a review before submitting.");
+            return;
+        }
+
+        reviews.push(text);
+
+        textarea.value = "";
+
+        let btn = document.getElementById('reviewBtn');
+        btn.textContent = `review (${reviews.length})`;
+
+        renderReviews();
+    }
+
+
+    async function postdata() {
+        let inp1 = document.querySelectorAll('input')[1];
+        let inp2 = document.querySelectorAll('input')[2];
+        let inp3 = document.querySelectorAll('input')[3];
+        let inp4 = document.querySelectorAll('input')[4];
+        let inp5 = document.querySelectorAll('input')[5];
+        let inp6 = document.querySelectorAll('input')[6];
+        let inp7 = document.querySelectorAll('input')[7];
+
+        let obj = {
+            image: inp1.value,
+            title: inp2.value,
+            year: inp3.value,
+            genre: inp4.value,
+            summary: inp5.value,
+            boxOffice: {
+                budget: inp6.value,
+                collection: inp7.value
+            }
+        };
+
+        await fetch('http://localhost:3000/movies', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(obj)
+        });
+
+        getapidata();
+        alert('Data added successfully')
+    }
+
+    async function putdata() {
+        let inp1 = document.querySelectorAll('input')[8];
+        let inp2 = document.querySelectorAll('input')[9];
+        let inp3 = document.querySelectorAll('input')[10];
+        let inp4 = document.querySelectorAll('input')[11];
+        let inp5 = document.querySelectorAll('input')[12];
+        let inp6 = document.querySelectorAll('input')[13];
+        let inp7 = document.querySelectorAll('input')[14];
+
+        let obj = {
+            image: inp1.value,
+            title: inp2.value,
+            year: inp3.value,
+            genre: inp4.value,
+            summary: inp5.value,
+            boxOffice: {
+                budget: inp6.value,
+                collection: inp7.value
+            }
+        };
+
+        let inp = document.querySelectorAll('input')[15];
+
+        await fetch(`http://localhost:3000/movies/${inp.value}`, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(obj)
+        });
+
+        getapidata();
+        alert('Data modified successfully')
+
+    }
+
+    async function deldata() {
+        let inp = document.querySelectorAll('input')[16];
+
+        await fetch(`http://localhost:3000/movies/${inp.value}`, {
+            method: 'DELETE'
+        });
+
+        getapidata();
+        alert('Data deleted successfully')
+    }
+
+    let a = document.getElementById('filteredbytitle');
+    a.addEventListener('input', () => {
+        renderMovies();
+    });
+
+    let sel = document.getElementById('sortedbybudget');
+    sel.addEventListener('change', () => {
+        renderMovies();
+    });
+
+    let col = document.getElementById('sortedbycollection');
+    col.addEventListener('change', () => {
+        renderMovies();
+    });
+</script>
+
+</body>
+</html>
