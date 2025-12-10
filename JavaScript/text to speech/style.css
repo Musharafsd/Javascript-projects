@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  color: #fff;
+  background: radial-gradient(circle at top left, #451b7b, #14002c);
+}
+
+.hero {
+  width: 90%;
+  max-width: 700px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  letter-spacing: 0.03em;
+}
+
+.hero h1 span {
+  color: #ff4b6e;
+  border-bottom: 2px solid #f9f7f7;
+}
+
+textarea {
+  width: 100%;
+  min-height: 260px;
+  padding: 20px 22px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  resize: none;
+  outline: none;
+  font-size: 1rem;
+  color: #fff;
+}
+
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.row {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.row select {
+  flex: 1;
+  height: 52px;
+  padding: 0 50px 0 18px;         
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background-color: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  font-size: 0.9rem
+
+}
+
+.row button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 52px;
+  padding: 0 32px;
+  border-radius: 999px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: #ff4b6e;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 12px 30px rgba(255, 75, 110, 0.45);
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.row button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(255, 75, 110, 0.55);
+  background: #ff315c;
+}
+
+.row button:active {
+  transform: translateY(1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+.row button i {
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .row button {
+    width: 100%;
+  }
+}

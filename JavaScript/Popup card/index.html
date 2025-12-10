@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POPUP</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <button onclick="popup()">submit</button>
+    <script>
+        function popup(){
+        let card=document.createElement('div')
+        let h=document.createElement('h1')
+        h.innerText="Thank you"
+        let p=document.createElement('p')
+        p.innerText="your application is successfully submited"
+        let btn=document.createElement('button')
+        btn.innerText="Okay"
+        btn.addEventListener('click',()=>{
+            card.remove()
+        })
+        card.append(h,p,btn)
+            document.body.append(card)
+        }
+        
+    </script>
+</body>
+</html>
