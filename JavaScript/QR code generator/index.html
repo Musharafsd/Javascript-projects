@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR code</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+    <label>Enter your text or URL</label>
+    <input placeholder="Text or URL"/>
+    <div class="qrcode"><img/></div>
+    <button onclick="code()"><i class="fa-solid fa-bolt"></i> Generate QR code</button>
+    </div>
+    <script>
+        function code(){
+            let div=document.querySelector('.qrcode')
+            div.style.display="block"
+            let inp=document.querySelector('input')
+            let img=document.querySelector('img')
+            img.setAttribute('src',`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${inp.value}`)
+            div.append(img)
+        }
+    </script>
+</body>
+</html>

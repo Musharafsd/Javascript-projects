@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random password</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <h1>Generate a</h1>
+    <p>Random Password</p>
+    <input placeholder="Password"></input>
+    <button onclick="generate()"><i class="fa-solid fa-bolt"></i> Generate Password</button>
+    <script>
+        let inp=document.querySelector('input')
+        inp.value=""
+        function generate(){
+            let pass="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            let pass1="abcdefghijklmnopqrstuvwxyz"
+            let pass2="1234567890"
+            let pass3="!@#$&_-?"
+            inp.value=`${pass[Math.floor(Math.random()*pass.length)]}${pass1[Math.floor(Math.random()*pass1.length)]}${pass2[Math.floor(Math.random()*pass2.length)]}${pass3[Math.floor(Math.random()*pass3.length)]}${pass1[Math.floor(Math.random()*pass1.length)]}${pass1[Math.floor(Math.random()*pass1.length)]}${pass2[Math.floor(Math.random()*pass2.length)]}${pass2[Math.floor(Math.random()*pass2.length)]}`
+        }
+    </script>
+</body>
+</html>
