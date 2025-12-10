@@ -7,8 +7,14 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <button onclick="getdata()">Quotes</button>
-    <p></p>
+    <div>
+        
+        <h1>Quote of the day</h1>
+        <p>Thinking is the capital, Enterprise is the way, Hard Work is the solution.</p>
+        <i>- Abdul Kalam</i>
+
+    <button onclick="getdata()">New Quotes</button>
+    </div>
     <script>
         async function getdata() {
         
@@ -16,9 +22,9 @@
         let data=await a.json()
 
         let q=document.querySelector('p')
-        q.style.width="auto"
-        q.style.padding="20px 25px"
-        q.innerHTML=data.quotes[Math.floor(Math.random()*data.quotes.length)].quote
+        q.innerHTML=`${data.quotes[Math.floor(Math.random()*data.quotes.length)].quote}`
+        let i=document.querySelector('i')
+        i.innerHTML=`- ${data.quotes[Math.floor(Math.random()*data.quotes.length)].author}`
 
         }
     </script>
