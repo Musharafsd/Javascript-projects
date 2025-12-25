@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guess my number</title>
+ <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
+
+    body {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        color: #fff;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 380px;
+        background: rgba(255, 255, 255, 0.15);
+        padding: 30px;
+        border-radius: 20px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 0 25px rgba(0,0,0,0.35);
+        text-align: center;
+        animation: fan 0.8s ease;
+    }
+
+    @keyframes fan {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    h1 {
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #ffe7ff;
+        text-shadow: 0px 0px 8px rgba(255,255,255,0.7);
+    }
+
+    label {
+        font-size: 18px;
+        margin-bottom: 10px;
+        display: block;
+        font-weight: 500;
+    }
+
+    .range-box {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin: 15px 0;
+        flex-wrap: wrap;
+    }
+
+    input {
+        padding: 10px;
+        width: 75px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        font-size: 17px;
+        text-align: center;
+        background: rgba(255,255,255,0.9);
+        color: #222;
+        font-weight: 600;
+    }
+
+    #guessInput {
+        width: 160px;
+    }
+
+    button {
+        padding: 12px 22px;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: 600;
+        background: #ffcc00;
+        color: #222;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: 0.25s;
+    }
+
+    button:hover {
+        background: #ffe066;
+        transform: translateY(-3px) scale(1.03);
+    }
+
+    p {
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: 500;
+        min-height: 30px;
+        color: #fff;
+    }
+
+    @media (max-width: 450px) {
+        h1 {
+            font-size: 26px;
+        }
+
+        input {
+            width: 65px;
+            font-size: 15px;
+        }
+
+        #guessInput {
+            width: 140px;
+        }
+
+        button {
+            font-size: 17px;
+        }
+    }
+</style>
+
+
+</head>
+
+<body>
+  <div class="container">
+  <h1>Guess My Number</h1>
+  <label for="number">Guess a random number</label>
+  <div class="range-box"><input type="text"  value="1" />
+  <input id="number" type="text"  value="100"/>
+  <button onclick="trg()">New target</button></div>
+  <p></p>
+  <input id="guessInput" type="text" />
+  <button onclick="fun()">Guess</button>
+<script>
+    let r=document.querySelector('p')
+    r.innerText='Please guess a number, enter it, and press Guess:'
+    let p=document.querySelectorAll('input')[1]
+    let a=Math.floor(Math.random()*(p.value))
+    let count=0
+
+    function trg(){
+      r.innerText='Please guess a number, enter it, and press Guess:'
+      a=Math.floor(Math.random()*(p.value))
+      let count=0
+    }
+    
+    function fun(){
+    count++
+    let d=document.querySelectorAll('input')[0]
+    let q=document.querySelectorAll('input')[2]
+
+    if(q.value==a){
+        r.innerText=`Well Done! It took you ${count} attempts to guess this number`
+    }else if(q.value<a){
+        r.innerText=`My number is greater than ${q.value}`
+    }else{
+        r.innerText=`My number is lesser than ${q.value}`
+    }
+    }
+
+</script>
+</div>  
+</body>
+
+</html>

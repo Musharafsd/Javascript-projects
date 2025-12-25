@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text to speech</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  color: #fff;
+  background: radial-gradient(circle at top left, #451b7b, #14002c);
+}
+
+.hero {
+  width: 90%;
+  max-width: 700px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  letter-spacing: 0.03em;
+}
+
+.hero h1 span {
+  color: #ff4b6e;
+  border-bottom: 2px solid #f9f7f7;
+}
+
+textarea {
+  width: 100%;
+  min-height: 260px;
+  padding: 20px 22px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  resize: none;
+  outline: none;
+  font-size: 1rem;
+  color: #fff;
+}
+
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.row {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.row select {
+  flex: 1;
+  height: 52px;
+  padding: 0 50px 0 18px;         
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background-color: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  font-size: 0.9rem
+
+}
+
+.row button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 52px;
+  padding: 0 32px;
+  border-radius: 999px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: #ff4b6e;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 12px 30px rgba(255, 75, 110, 0.45);
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.row button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(255, 75, 110, 0.55);
+  background: #ff315c;
+}
+
+.row button:active {
+  transform: translateY(1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+.row button i {
+  font-size: 1rem;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    max-width: 90%;
+  }
+
+  .hero h1 {
+    font-size: 2.1rem;
+  }
+
+  textarea {
+    min-height: 220px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 20px;
+    align-items: flex-start;
+  }
+
+  .hero {
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 1.7rem;
+    text-align: center;
+  }
+
+  textarea {
+    min-height: 180px;
+    padding: 16px;
+    font-size: 0.9rem;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .row select {
+    width: 100%;
+    height: 48px;
+    font-size: 0.85rem;
+  }
+
+  .row button {
+    width: 100%;
+    height: 48px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  textarea {
+    min-height: 150px;
+    font-size: 0.85rem;
+  }
+
+  .row button {
+    font-size: 0.9rem;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Text to Speech <span>Converter</span></h1>
+        <textarea placeholder="write anything here..."></textarea>
+        <div class="row">
+            <select></select>
+            <button ><i class="fa-solid fa-play"></i> Listen</button>
+        </div>
+    </div>
+    <script>
+        let speech= new SpeechSynthesisUtterance()
+
+        let voices=[]
+
+        let voiceSelect=document.querySelector('select')
+
+        window.speechSynthesis.onvoiceschanged=()=>{
+            voices=window.speechSynthesis.getVoices()
+            speech.voice=voices[0]
+
+            voices.forEach((voice,i)=>(voiceSelect.options[i]=new Option(voice.name,i)))
+
+        }
+
+        voiceSelect.addEventListener("change",()=>{
+            speech.voice=voices[voiceSelect.value]
+        })
+
+        document.querySelector('button').addEventListener('click',()=>{
+            speech.text=document.querySelector('textarea').value
+            window.speechSynthesis.speak(speech)
+        })
+    </script>
+</body>
+</html>

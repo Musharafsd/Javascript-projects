@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quotes</title>
+    <style>
+   *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", serif;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #cdd6ff;  
+}
+
+body > div{
+    width: 650px;
+    background: #fff;
+    padding: 50px 40px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+}
+
+h1{
+    font-size: 28px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 18px;
+    position: relative;
+}
+
+h1::after{
+    content: "";
+    width: 70px;
+    height: 3px;
+    background: #3b6ef5;
+    display: block;
+    margin: 8px auto 0;
+    border-radius: 2px;
+}
+
+p{
+    font-size: 22px;
+    line-height: 1.5;
+    color: #000;
+    margin: 25px 0;
+    font-weight: 500;
+}
+
+i{
+    display: block;
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 35px;
+    font-size: 16px;
+    color: #555;
+}
+
+button{
+    padding: 12px 35px;
+    background: #3b6ef5;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+button:hover{
+    background: #2f59d8;
+}
+
+</style>
+
+</head>
+<body>
+    <div>
+
+        <h1>Quote of the day</h1>
+        <p>Thinking is the capital, Enterprise is the way, Hard Work is the solution.</p>
+        <i>- Abdul Kalam</i>
+
+    <button onclick="getdata()">New Quotes</button>
+    </div>
+    <script>
+        async function getdata() {
+        
+        let a=await fetch('https://dummyjson.com/quotes')
+        let data=await a.json()
+
+        let q=document.querySelector('p')
+        q.innerHTML=`${data.quotes[Math.floor(Math.random()*data.quotes.length)].quote}`
+        let i=document.querySelector('i')
+        i.innerHTML=`- ${data.quotes[Math.floor(Math.random()*data.quotes.length)].author}`
+
+        }
+    </script>
+</body>
+</html>

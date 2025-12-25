@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background: #f5f6fa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+}
+
+input{
+    padding: 10px;
+    width: 250px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+button{
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background: #00a8ff;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: .3s;
+}
+
+button:hover{
+    background: #0097e6;
+}
+
+ul{
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 350px;
+    list-style: none;
+}
+
+ul li{
+    background: white;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: .2s;
+}
+
+ul li:hover{
+    transform: scale(1.02);
+}
+
+ul li div button{
+    margin-left: 8px;
+    padding: 7px 12px;
+    font-size: 12px;
+}
+
+ul li div button:nth-child(1){
+    background: #e1b12c;
+}
+
+ul li div button:nth-child(1):hover{
+    background: #d4a017;
+}
+
+ul li div button:nth-child(2){
+    background: #e84118;
+}
+
+ul li div button:nth-child(2):hover{
+    background: #c23616;
+}
+  </style>
+</head>
+<body>
+<div>
+  <input type="text" placeholder="Enter list item"/>
+  <button onclick="getdata()">add </button>
+</div>
+<ul></ul> 
+<script>
+  var ul=document.querySelector('ul')
+
+  function getdata(){
+    let inp=document.querySelector('input')
+
+    let li=document.createElement('li')
+    let span=document.createElement('span')
+    span.innerText=inp.value
+
+    let div=document.createElement('div')
+
+    let btn1=document.createElement('button')
+    btn1.innerText='update'
+
+    btn1.addEventListener('click',()=>{
+        var newdata=prompt('enter task name')
+        span.innerText=newdata
+    })
+    
+    let btn2=document.createElement('button')
+    btn2.innerText='delete'
+    btn2.addEventListener('click',()=>{
+        li.remove()
+    })
+
+    div.append(btn1,btn2)
+    li.append(span,div)
+    ul.append(li)
+  }
+</script>
+</body>
+</html>

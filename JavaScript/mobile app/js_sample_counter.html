@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0px;
+            padding: 0px;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: aqua;
+        }
+        .head{
+            width: 50%;
+            height: 50vh;
+            border-radius: 20px;
+            background-color:rgb(204, 241, 212);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        input{
+            width: 30%;
+            height: 20vh;
+            text-align: center;
+            font-size: 80px;
+            border-radius: 20px;
+            background-color:rgb(246, 246, 243);
+
+        }
+        button{
+            width: 10%;
+            height: 8vh;
+            font-size: 50px;
+            text-align: center;
+            background-color:rgb(55, 33, 215);
+            color: white;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" value="0">
+    <script>
+        var div=document.createElement("div")
+        div.classList.add('class','head')
+        var input=document.querySelector("input")
+        var btn1=document.createElement("button")
+        let num=0;
+        btn1.innerText="+"
+        btn1.addEventListener('click',()=>{
+            num++;
+            input.value=num;
+        })
+        var btn2=document.createElement("button")
+        btn2.innerText="-"
+        btn2.addEventListener('click',()=>{
+            if (input.value!=0){
+                num--;
+                input.value=num;
+            }
+        })
+        div.append(input,btn1,btn2)
+        document.body.append(div)
+        
+    </script>
+</body>
+</html>
